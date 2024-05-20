@@ -3,13 +3,14 @@ import Image from "next/image";
 import img_composto from "../images/svg/juros_composto.svg";
 import img_simples from "../images/svg/juros_simples.svg";
 import HeaderCustom from "@/components/header";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main>
       <HeaderCustom />
       {/* COMPOSTO */}
-      <div className="container mx-auto px-10 md:px-10 xl:px-32 flex items-center gap-20 pt-20 border-b-2 pb-20">
+      <div className="container mx-auto px-10 md:px-10 xl:px-32 flex items-center gap-20 pt-40 border-b-2 pb-20">
         <div className="flex flex-col gap-10 w-full md:w-1/2 text-center">
           <h3 className="font-bold text-right text-3xl xl:text-4xl">
             Juros composto
@@ -20,12 +21,12 @@ export default function Home() {
             repudiandae aperiam sit voluptatum recusandae. Omnis dignissimos
             quidem ab doloribus, cum sed.
           </p>
-          <a
-            href="#"
+          <Link
+            href="/composto"
             className="py-2 px-5 bg-blue-500 rounded-md text-white hover:bg-blue-600 transition-colors"
           >
             Calcular juros composto
-          </a>
+          </Link>
         </div>
         <Image
           className="w-1/2 hidden md:block"
