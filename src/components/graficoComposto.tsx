@@ -64,9 +64,10 @@ export default function GraficoComposto({
         ],
       },
       options: {
+        responsive: true,
         scales: {
           y: {
-            stacked: true,
+            beginAtZero: false,
           },
         },
       },
@@ -78,5 +79,11 @@ export default function GraficoComposto({
     };
   }, [data1, data2, labels]);
 
-  return <canvas ref={canvasRef} id="myChart" className="p-10"></canvas>;
+  return (
+    <canvas
+      ref={canvasRef}
+      id="myChart"
+      className="max-w-3xl max-h-96"
+    ></canvas>
+  );
 }

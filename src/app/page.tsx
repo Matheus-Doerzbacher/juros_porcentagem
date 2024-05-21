@@ -22,7 +22,7 @@ export default function Home() {
             quidem ab doloribus, cum sed.
           </p>
           <Link
-            href="/composto"
+            href="/juros"
             className="py-2 px-5 bg-blue-500 rounded-md text-white hover:bg-blue-600 transition-colors"
           >
             Calcular juros composto
@@ -36,7 +36,7 @@ export default function Home() {
       </div>
       {/* SIMPLES */}
       <div
-        className="container mx-auto px-10 md:px-10 xl:px-32 flex items-center gap-20 pt-40 border-b-2 pb-20"
+        className="container mx-auto px-10 md:px-10 xl:px-32 flex items-center gap-20 pt-20 border-b-2 pb-20"
         id="simples"
       >
         <Image
@@ -54,12 +54,12 @@ export default function Home() {
             repudiandae aperiam sit voluptatum recusandae. Omnis dignissimos
             quidem ab doloribus, cum sed.
           </p>
-          <a
-            href="#"
+          <Link
+            href="/juros"
             className="py-2 px-5 bg-blue-500 rounded-md text-white hover:bg-blue-600 transition-colors"
           >
             Calcular juros simples
-          </a>
+          </Link>
         </div>
       </div>
       {/* PORCENTAGEM */}

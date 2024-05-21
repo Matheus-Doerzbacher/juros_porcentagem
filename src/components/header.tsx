@@ -8,8 +8,7 @@ export default function HeaderCustom() {
     <header className="py-3 flex justify-around items-center flex-col md:flex-row gap-7 bg-white fixed top-0 w-full z-50">
       <Link href="/">{Logo}</Link>
       <nav className="flex gap-7">
-        <NavItem title="Juros Composto" url="/composto" />
-        <NavItem title="Juros Simples" url="#simples" />
+        <NavItem title="Calculo de Juros" url="/juros" />
         <Dropdown />
       </nav>
     </header>

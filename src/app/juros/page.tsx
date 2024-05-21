@@ -10,6 +10,12 @@ export default function CompostoPage() {
   const [taxaJuros, setTaxaJuros] = useState<any>();
   const [periodo, setPeriodo] = useState<any>();
   const [periodoSelect, setPeriodoSelect] = useState<MensalAnual>("mensal");
+  const [mostrarGrafico, setMostrarGrafico] = useState<boolean>(false);
+  const [dataComposto, setDataComposto] = useState<any>([]);
+  const [dataSimples, setDataSimples] = useState<any>([]);
+  const [label, setLabel] = useState<any>([]);
+  const [valorFinalComposto, setValorFinalComposto] = useState<any>();
+  const [valorFinalSimples, setValorFinalSimples] = useState<any>();
 
   function calcularJurosCompostos() {
     const C = parseFloat(valorInicial);
@@ -20,27 +26,42 @@ export default function CompostoPage() {
       t = t * 12;
     }
 
-    // Calcular o montante usando a fórmula de juros compostos
-    const M = C * Math.pow(1 + i, t);
+    const composto = C * Math.pow(1 + i, t);
+    const simples = C + C * i * t;
 
-    console.log("Montante acumulado:", M.toFixed(2));
-    return M; // Retorna o montante acumulado
+    const label = [];
+    const data1 = [];
+    const data2 = [];
+
+    for (let mes = 0; mes <= t; mes++) {
+      label.push(mes);
+      data1.push(C * Math.pow(1 + i, mes));
+      data2.push(C + C * i * mes);
+    }
+
+    setLabel(label);
+    setDataComposto(data1);
+    setDataSimples(data2);
+
+    setValorFinalComposto(composto);
+    setValorFinalSimples(simples);
+
+    setMostrarGrafico(true);
   }
-
-  // Exemplo de uso:
 
   function limpar() {
     setValorInicial("");
     setTaxaJuros("");
     setPeriodo("");
     setPeriodoSelect("mensal");
+    setMostrarGrafico(false);
   }
 
   return (
     <>
       <HeaderCustom />
       <div className="container mx-auto mt-40 md:mt-20 font-bold ">
-        <h2 className="text-center md:text-left text-4xl">Juros composto</h2>
+        <h2 className="text-center md:text-left text-3xl">Calculo de Juros</h2>
         <div className="p-10 w-full ">
           {/* LINHA - 1 */}
           <div className="flex flex-col md:flex-row w-full gap-2 md:gap-10">
@@ -135,21 +156,39 @@ export default function CompostoPage() {
           </div>
         </div>
       </div>
-      <div className="container flex flex-col mx-auto px-10 py-5 border gap-5 border-zinc-300 rounded-md">
-        <h3 className="font-bold text-xl text-blue-500">Resultado</h3>
-        <div className="flex justify-around">
-          {Array(1, 2, 4).map((_, i) => (
-            <div
-              key={i}
-              className="flex flex-col justify-center items-center border border-zinc-300 rounded-md px-10 py-5"
-            >
+      {mostrarGrafico && (
+        <div className="container flex flex-col mx-auto px-10 py-5 border gap-5 border-zinc-300 rounded-md">
+          <h3 className="font-bold text-xl text-blue-500">Resultado</h3>
+          <div className="flex justify-evenly flex-col md:flex-row gap-5">
+            {/*  */}
+            <div className="flex flex-col justify-center items-center border border-zinc-300 rounded-md px-10 py-5">
               <h5 className="font-black text-zinc-600">Valor Inicial</h5>
-              <p className="font-bold text-red-700">R$ 300</p>
+              <p className="font-bold text-green-600">R$ {valorInicial}</p>
             </div>
-          ))}
+            {/*  */}
+            <div className="flex flex-col justify-center items-center border border-zinc-300 rounded-md px-10 py-5">
+              <h5 className="font-black text-zinc-600">Valor Final Composto</h5>
+              <p className="font-bold text-red-700">
+                R$ {valorFinalComposto.toFixed(2)}
+              </p>
+            </div>
+            {/*  */}
+            <div className="flex flex-col justify-center items-center border border-zinc-300 rounded-md px-10 py-5">
+              <h5 className="font-black text-zinc-600">Valor Final Simples</h5>
+              <p className="font-bold text-blue-700">
+                R$ {valorFinalSimples.toFixed(2)}
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <GraficoComposto
+              data1={dataComposto}
+              data2={dataSimples}
+              labels={label}
+            />
+          </div>
         </div>
-        <GraficoComposto data1={[]} data2={[]} labels={[]} />
-      </div>
+      )}
     </>
   );
 }
