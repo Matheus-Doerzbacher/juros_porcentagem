@@ -1,4 +1,4 @@
-import { Logo } from "@/images/svg/svg_images";
+import { Logo } from "../../public/images/svg/svg_images";
 import NavItem from "@/components/nav_item";
 
 export default function Home() {

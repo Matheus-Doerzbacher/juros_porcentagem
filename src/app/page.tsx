@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import img_composto from "../images/svg/juros_composto.svg";
-import img_simples from "../images/svg/juros_simples.svg";
+import img_composto from "../../public/images/svg/juros_composto.svg";
+import img_simples from "../../public/images/svg/juros_simples.svg";
 import HeaderCustom from "@/components/header";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ export default function Home() {
       {/* COMPOSTO */}
       <div className="container mx-auto px-10 md:px-10 xl:px-32 flex items-center gap-20 pt-40 border-b-2 pb-20">
         <div className="flex flex-col gap-10 w-full md:w-1/2 text-center">
-          <h3 className="font-bold text-right text-3xl xl:text-4xl">
+          <h3 className="font-bold text-right text-2xl xl:text-3xl">
             Juros composto
           </h3>
           <p className="text-right">
