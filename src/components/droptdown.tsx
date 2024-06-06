@@ -43,7 +43,7 @@ const Dropdown = () => {
           <ul role="menu" aria-orientation="vertical">
             <li>
               <a
-                href="#"
+                href="/calc_valor"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold"
                 onClick={closeDropdown}
               >
@@ -52,7 +52,7 @@ const Dropdown = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/calc_porcent"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold"
                 onClick={closeDropdown}
               >
