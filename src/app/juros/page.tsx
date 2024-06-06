@@ -92,7 +92,7 @@ export default function CompostoPage() {
                 htmlFor="valor_mensal"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Taxa de juros
+                Taxa de juros mensal
               </label>
               <div className="flex">
                 <div className="relative mb-6 flex-1">
@@ -163,7 +163,9 @@ export default function CompostoPage() {
             {/*  */}
             <div className="flex flex-col justify-center items-center border border-zinc-300 rounded-md px-10 py-5">
               <h5 className="font-black text-zinc-600">Valor Inicial</h5>
-              <p className="font-bold text-green-600">R$ {valorInicial}</p>
+              <p className="font-bold text-green-600">
+                R$ {parseFloat(valorInicial).toFixed(2)}
+              </p>
             </div>
             {/*  */}
             <div className="flex flex-col justify-center items-center border border-zinc-300 rounded-md px-10 py-5">
